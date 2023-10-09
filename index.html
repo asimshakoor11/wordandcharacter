@@ -8,20 +8,41 @@
     <title>Word Counter</title>
 
     <style>
-        body {
-            padding: 50px 100px;
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .main-container {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+        }
+
+        .main-container .main {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
         }
 
         h1 {
+            width: 100%;
+
             text-align: center;
             background-color: #006780;
             color: white;
             padding: 10px;
             margin: 0px;
+            margin-top: 20px;
         }
 
         textarea {
-            width: 96%;
+            width: 100%;
             border-color: #006780;
             margin: 10px auto;
             font-size: 15px;
@@ -29,6 +50,8 @@
         }
 
         p {
+            width: 100%;
+
             text-align: center;
             background-color: #006780;
             font-size: 25px;
@@ -37,25 +60,52 @@
             padding: 10px;
             margin: 0px;
         }
+
+
+        @media screen and (max-width: 800px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .main-container .main {
+                width: 100%;
+            }
+        }
     </style>
 
+    
 </head>
 
 <body>
-    <h1>Word and Character Counter</h1>
 
-    <textarea id="textbox" cols="30" rows="10"></textarea>
+    <div class="main-container">
+        
+        <div class="main">
 
-    <p>
-        <span id="word">0</span> Words and,
-        <span id="char">0</span> Characters
-    </p>
-</body>
+          
+            <div class="main-body">
 
+                <h1>Word and Character Counter</h1>
+
+                <textarea id="textbox" cols="30" rows="10"></textarea>
+
+                <p>
+                    <span id="word">0</span> Words and,
+                    <span id="char">0</span> Characters
+                </p>
+            </div>
+
+
+        </div>
+
+       
+    </div>
+
+    
 <script>
     let textbox = document.getElementById("textbox");
 
-    textbox.addEventListener('input', function(){
+    textbox.addEventListener('input', function () {
         var text = this.value;
 
         // string is an array of characters
@@ -66,12 +116,15 @@
         // word counter
         text = text.trim();  // extra spces hata deta h 
         let words = text.split(" ");
-        let cleanList = words.filter(function(elm){
+        let cleanList = words.filter(function (elm) {
             return elm != "";  // new array return kry ga
         });
         document.getElementById("word").innerHTML = cleanList.length;
-        
+
     });
 </script>
+    
+</body>
+
 
 </html>
